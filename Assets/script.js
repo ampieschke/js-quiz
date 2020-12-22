@@ -9,13 +9,23 @@ var buttonCEl = document.querySelector("#btnC");
 var buttonDEl = document.querySelector("#btnD");
 var next = document.querySelector("#nextButton");
 var progEl = document.querySelector("#progress");
+
+//Quiz Vars
 var shuffledQuestions
 var questionIndex
 
-//Event Listeners
+//Timer Vars
+var timerInterval
+var timeRemaining = 60
+
+
+//Begin Button Listener
 begin.addEventListener("click", startQuiz);
+
+//Answer Button Listeners
 buttonAEl.addEventListener("click", () => {
     questionIndex++
+    console.log(questionIndex);
     progEl.innerText = "progress: " + questionIndex + "/5";
     getQuestion()
 })
@@ -45,10 +55,11 @@ function startQuiz() {
     progEl.innerText = "progress: " + questionIndex + "/5";
 }
 
-// Set Time
+
+// Timer Start
 function beginTimer() {
-    var timeRemaining = 60
-    var timerInterval = setInterval(function () {
+
+    timerInterval = setInterval(function () {
         timeRemaining--;
         timerEl.innerHTML = timeRemaining;
         if (timeRemaining <= 0) {
@@ -61,6 +72,13 @@ function beginTimer() {
     }, 1000);
 }
 
+
+// Timer Stop
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+
 //Sort,Index, and Begin Asking Questions
 function beginQuiz() {
     shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -68,19 +86,44 @@ function beginQuiz() {
     getQuestion()
 }
 
+
 // Selects Questions in Sorted Order
 function getQuestion() {
     readQuestion(shuffledQuestions[questionIndex])
 }
 
+
 // Selects Question and Proper Answers
 function readQuestion(question) {
+    if (questionIndex >= 5) {
+        endGame();
+    }
     questionEl.innerText = question.question
     buttonAEl.innerText = question.answers[0]
     buttonBEl.innerText = question.answers[1]
     buttonCEl.innerText = question.answers[2]
     buttonDEl.innerText = question.answers[3]
 }
+
+
+//End Game ToDos
+function endGame() {
+    stopTimer();
+    questionEl.innerText = "Quiz Complete! Enter Your Initials to Enter the Hall of Fame!"
+    answersEl.classList.add("hiden");
+    timerEl.innerHTML = "YAY!";
+    console.log(timeRemaining);
+    localStorage.setItem("Time Remaining", JSON.stringify(timeRemaining));
+}
+
+
+//Quiz Taker Submission
+// var quizTaker = {
+// Initials: initialsInput.value.trim(),
+// Score: timeRemaining
+
+// };
+
 
 
 // Questions
@@ -131,11 +174,3 @@ var questions = [
         ]
     }
 ]
-
-
-
-
-
-
-
-//localStorage.setItem("high score".highScore)
