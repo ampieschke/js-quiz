@@ -1,14 +1,21 @@
 
 var begin = document.querySelector("#beginButton");
 var timerEl = document.querySelector("#timer");
+var quizEl = document.querySelector("#quiz");
 var questionEl = document.querySelector("#question");
 var answersEl = document.querySelector("#answers");
 var buttonAEl = document.querySelector("#btnA");
 var buttonBEl = document.querySelector("#btnB");
 var buttonCEl = document.querySelector("#btnC");
 var buttonDEl = document.querySelector("#btnD");
+var hofEnterEl = document.querySelector("#hof");
+var hofButton = document.querySelector("#hofB");
+var hofListEl = document.querySelector("#hofList");
 var next = document.querySelector("#nextButton");
 var progEl = document.querySelector("#progress");
+var initialsInput = document.querySelector("#user-Initials-input")
+var userInitialsSpan = document.querySelector("#user-initials")
+var userScoreSpan = document.querySelector("#user-score")
 
 //Quiz Vars
 var shuffledQuestions
@@ -97,6 +104,7 @@ function getQuestion() {
 function readQuestion(question) {
     if (questionIndex >= 5) {
         endGame();
+        return;
     }
     questionEl.innerText = question.question
     buttonAEl.innerText = question.answers[0]
@@ -109,21 +117,42 @@ function readQuestion(question) {
 //End Game ToDos
 function endGame() {
     stopTimer();
+
     questionEl.innerText = "Quiz Complete! Enter Your Initials to Enter the Hall of Fame!"
     answersEl.classList.add("hiden");
     timerEl.innerHTML = "YAY!";
     console.log(timeRemaining);
-    localStorage.setItem("Time Remaining", JSON.stringify(timeRemaining));
+    hofEnterEl.classList.remove("hiden");
 }
 
 
-//Quiz Taker Submission
-// var quizTaker = {
-// Initials: initialsInput.value.trim(),
-// Score: timeRemaining
+//Create user Object from Submission and Add to HOF Array
+hofButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    var hof = [];
+    var user = {
+        initials: initialsInput.value.trim(),
+        score: timeRemaining
+    };
+    console.log(user)
+    hof.push(user)
+    console.log(hof)
+    hofEnterEl.classList.add("hiden");
+    hofListEl.classList.remove("hiden");
 
-// };
+    localStorage.setItem("user", JSON.stringify(user))
+    //localStorage.setItem("score", JSON.stringify(timeRemaining));
+    runHof();
+}
+);
 
+//Show HOF
+function runHof() {
+    quizEl.classList.add("hiden");
+    var lastUser = JSON.parse(localStorage.getItem("user"));
+    userInitialsSpan.innerHTML = lastUser.initials;
+    userScoreSpan.innerHTML = lastUser.score;
+}
 
 
 // Questions
