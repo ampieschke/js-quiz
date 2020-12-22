@@ -1,4 +1,10 @@
 .main {
     font-family: 'Open Sans Condensed', sans-serif !important;
     text-align: center !important;
+    margin: 10px !important;
+}
+
+.btn{
+    background-color: #1a5c96 !important;
+    border: #1a5c96 !important;
 }
