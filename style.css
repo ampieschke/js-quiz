@@ -7,4 +7,6 @@
 .btn{
     background-color: #1a5c96 !important;
     border: #1a5c96 !important;
+    color: white !important;
+    margin: 5px;
 }

@@ -36,21 +36,24 @@
     <!-- Begin Nav Bar -->
 
     <!-- Begin Content -->
-    <h1 class="main">Welcome</h1>
+    <h1 class="main" id="timer">Welcome</h1>
     <div class="row justify-content-center">
         <div class="card text-center" style="width:80%;">
 
             <div class="card-body">
                 <h5 class="card-title">JS Quiz</h5>
-                <p class="card-text">Welcome to the quiz! You will have 60 seconds to answer a series of multiple choice
+                <p class="card-text" id="question">Welcome to the quiz! You will have 60 seconds to answer a series of
+                    multiple choice
                     questions.
                     <br>
                     Be careful! Every time a question is answered wrong, you will be docked 5 seconds.
                     <br>
                     Click "Begin" when you are ready!
-                <div id="timer"></div>
+
                 </p>
-                <a href="#" class="btn btn-primary" id="beginButton">Begin!</a>
+                <row id="buttonTown">
+                    <button class="btn btn-primary" id="beginButton">Begin!</button>
+                </row>
             </div>
         </div>
         <!-- End Content -->
