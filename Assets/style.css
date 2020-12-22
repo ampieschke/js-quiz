@@ -10,3 +10,8 @@
     color: white !important;
     margin: 5px;
 }
+
+
+.hiden{
+    display: none !important;
+}

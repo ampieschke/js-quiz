@@ -1,12 +1,14 @@
 
-var begin = document.querySelector("#beginButton");
-var timerEl = document.querySelector("#timer");
-var questionEl = document.querySelector("#question")
-var buttonsEl = document.querySelector("#buttonTown")
+const begin = document.querySelector("#beginButton");
+const timerEl = document.querySelector("#timer");
+const questionEl = document.querySelector("#question")
+const answers = document.querySelector("#answers")
 
 
 begin.addEventListener("click", startQuiz);
 function startQuiz() {
+    begin.classList.add("hiden");
+    answers.classList.remove("hiden");
     beginTimer();
     beginQuiz()
 }
@@ -32,11 +34,24 @@ function beginTimer() {
 
 function beginQuiz() {
     questionEl.innerHTML = "I'm a question!";
-    buttonsEl.innerHTML = "<button class=btn btnA>A</button><button class=btn btnB>B</button><button class=btn btnC>C</button><button class=btn btnD>D</button>"
-
+    //   buttonsEl.setAttribute("style, display:show")
 }
+// function getQuestion() {
+//     var questions = [a, b, c];
+//     var questionOrder = shuffle(questions);
+//     console.log(questionOrder);
 
-Questions
+//}
+
+// function setNextQuestion() {
+
+// }
+
+// function selectAnswer() {
+
+// }
+
+
 
 
 
