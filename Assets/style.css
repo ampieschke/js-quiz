@@ -1,3 +1,8 @@
+body{
+    background-color: rgb(197, 197, 197) !important;
+}
+
+
 .main {
     font-family: 'Open Sans Condensed', sans-serif !important;
     text-align: center !important;

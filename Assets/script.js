@@ -25,6 +25,8 @@ var questionIndex
 var timerInterval
 var timeRemaining = 60
 
+var hof = [];
+
 
 //Begin Button Listener
 begin.addEventListener("click", startQuiz);
@@ -129,7 +131,9 @@ function endGame() {
 //Create user Object from Submission and Add to HOF Array
 hofButton.addEventListener("click", function (event) {
     event.preventDefault();
-    var hof = [];
+    hofEnterEl.classList.add("hiden");
+    hofListEl.classList.remove("hiden");
+
     var user = {
         initials: initialsInput.value.trim(),
         score: timeRemaining
@@ -137,8 +141,7 @@ hofButton.addEventListener("click", function (event) {
     console.log(user)
     hof.push(user)
     console.log(hof)
-    hofEnterEl.classList.add("hiden");
-    hofListEl.classList.remove("hiden");
+
 
     localStorage.setItem("user", JSON.stringify(user))
     //localStorage.setItem("score", JSON.stringify(timeRemaining));
