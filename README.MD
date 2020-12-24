@@ -20,4 +20,4 @@ THEN you can enter your initials and score
 https://ampieschke.github.io/js-quiz/
 
 --- PROJECT SCREENSHOT ---
-Assets/JS Quiz Screenshot.PNG
+Found in Assets folder
