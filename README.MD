@@ -3,7 +3,7 @@ The purpose of this project is to create a web-based JavaScript quiz.
 
 
 --- HOW IT WORKS ---
-GIVEN I am taking a code quiz
+GIVEN you are taking a code quiz
 WHEN you click the Begin! button
 THEN a timer starts and you are presented with a question
 WHEN you answer a question
